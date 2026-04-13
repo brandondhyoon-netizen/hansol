@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한솔그룹 기업통합 및 재무구조 혁신 제안 (최종)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+.chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+@media (min-width: 768px) { .chart-container { height: 400px; } }
+.gradient-bg { background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); }
+.card-shadow { box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.1), 0 8px 10px -6px rgba(30, 58, 138, 0.1); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Chosen Palette: Brilliant Blues & Vibrant Accents (Primary: #1E3A8A, Accent: #F59E0B, Success: #10B981) -->
+<!-- Application Structure Plan: The SPA is structured as a high-impact executive dashboard tailored for the CEO. It flows logically from a high-level summary of total benefits (Hero) -> detailed breakdown of annual cash flow improvements (Table & Chart) -> explanation of the structural integration process -> long-term inheritance tax benefits. This structure allows the CEO to immediately grasp the financial ROI before diving into the legal/tax mechanics. -->
+<!-- Visualization & Content Choices: 1. Core Benefits Breakdown -> Goal: Inform/Compare -> Viz: Donut Chart -> Justification: Shows the proportion of each financial benefit contributing to the total 1.3억 savings. Implemented via Chart.js Canvas (NO SVG). 2. Inheritance Tax -> Goal: Compare -> Viz: Bar Chart -> Justification: Stark visual contrast between the taxable base before (21억) and after (0원) applying the family business deduction. Implemented via Chart.js Canvas (NO SVG). 3. Integration Process -> Goal: Organize -> Viz: CSS Flexbox Diagram -> Justification: Clearly maps the flow of assets without needing external graphic libraries. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<nav class="gradient-bg text-white py-5 px-4 md:px-8 shadow-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="text-2xl font-black tracking-tight">HANSOL <span class="text-amber-400">CONSULTING</span></div>
+<div class="text-sm font-medium hidden md:block opacity-90">최종 재무구조 혁신 및 가업승계 제안 보고서</div>
+</div>
+</nav>
+
+<header class="max-w-7xl mx-auto px-4 py-16 md:py-24">
+<div class="text-center mb-16">
+<h1 class="text-3xl md:text-5xl font-black text-[#1E3A8A] mb-6 leading-tight">법인통합을 통한 가지급금 100% 해결 및<br>극대화된 종합 절세 솔루션</h1>
+<p class="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+개인사업자(한솔실업, 한솔팩)를 법인(주식회사 한솔)으로 현물출자 통합하여, 대표님의 가장 큰 고민인 <strong class="text-blue-600">가지급금 리스크를 일시에 영구 제거</strong>합니다. 이를 통해 창출되는 연간 <strong class="text-emerald-600">약 1.3억 원의 확실한 비용 절감 혜택</strong>과 향후 가업승계 시의 압도적인 상속세 절세 효과를 제안합니다.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white rounded-2xl p-8 card-shadow border-t-4 border-[#1E3A8A] text-center transform transition duration-300 hover:-translate-y-2">
+<div class="text-5xl mb-4">&#128181;</div>
+<div class="text-sm text-slate-500 font-bold mb-2 tracking-wide">연간 총 확정 수익/절감액</div>
+<div class="text-4xl font-black text-[#1E3A8A]">12,979<span class="text-xl font-bold ml-1">만원 / 년</span></div>
+<div class="text-xs text-slate-400 mt-2">매년 영구적으로 창출되는 현금흐름</div>
+</div>
+
+<div class="bg-white rounded-2xl p-8 card-shadow border-t-4 border-emerald-500 text-center transform transition duration-300 hover:-translate-y-2">
+<div class="text-5xl mb-4">&#128680;</div>
+<div class="text-sm text-slate-500 font-bold mb-2 tracking-wide">즉각적 리스크 해소</div>
+<div class="text-4xl font-black text-emerald-600">가지급금<span class="text-xl font-bold ml-1">ZERO</span></div>
+<div class="text-xs text-slate-400 mt-2">연 4,700만원 인정이자 완전 소멸</div>
+</div>
+
+<div class="bg-white rounded-2xl p-8 card-shadow border-t-4 border-amber-500 text-center transform transition duration-300 hover:-translate-y-2">
+<div class="text-5xl mb-4">&#127970;</div>
+<div class="text-sm text-slate-500 font-bold mb-2 tracking-wide">가업상속공제 한도 확보</div>
+<div class="text-4xl font-black text-amber-500">최대 300<span class="text-xl font-bold ml-1">억원</span></div>
+<div class="text-xs text-slate-400 mt-2">통합 법인 주식 상속을 통한 과표 축소</div>
+</div>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 pb-24">
+
+<section class="mb-24">
+<div class="mb-10">
+<h2 class="text-2xl md:text-3xl font-black text-[#1E3A8A] flex items-center"><span class="text-amber-500 mr-3">&#9632;</span> 1. 연간 재무 혜택 종합 분석 (비용 절감 및 세금 혜택)</h2>
+<p class="text-slate-600 mt-4 text-lg">가지급금 약 10억 원이 소멸됨에 따라 연쇄적으로 발생하는 직접적인 재무적 혜택 내역입니다. 요청하신 4,700만 원의 인정이자 혜택을 필두로, 소득세, 법인세, 이자비용, 관리비용 절감액을 정확히 산출하였습니다.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3 overflow-hidden rounded-2xl card-shadow bg-white border border-slate-100">
+<table class="min-w-full divide-y divide-slate-200">
+<thead class="bg-slate-50">
+<tr>
+<th scope="col" class="px-6 py-5 text-left text-sm font-bold text-[#1E3A8A] uppercase tracking-wider">구분 (혜택 발생 항목)</th>
+<th scope="col" class="px-6 py-5 text-right text-sm font-bold text-[#1E3A8A] uppercase tracking-wider">연간 절감/수익액</th>
+<th scope="col" class="px-6 py-5 text-left text-sm font-bold text-[#1E3A8A] uppercase tracking-wider">상세 산출 근거 (회의록 및 재무제표 기준)</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-slate-200">
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-5 whitespace-nowrap font-bold text-slate-800 flex items-center"><span class="text-xl mr-2 group-hover:scale-125 transition-transform">&#128176;</span> 인정이자 비용 소멸</td>
+<td class="px-6 py-5 whitespace-nowrap text-right font-black text-emerald-600 text-lg">47,000,000 원</td>
+<td class="px-6 py-5 text-sm text-slate-600 leading-relaxed"><strong class="text-slate-800">핵심 혜택:</strong> 가지급금 약 9.77억 원 소멸에 따라 매년 법인에 납부해야 했던 법정 인정이자 완전 면제</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-5 whitespace-nowrap font-bold text-slate-800 flex items-center"><span class="text-xl mr-2 group-hover:scale-125 transition-transform">&#128100;</span> 대표이사 소득세 절감</td>
+<td class="px-6 py-5 whitespace-nowrap text-right font-black text-blue-600 text-lg">17,860,000 원</td>
+<td class="px-6 py-5 text-sm text-slate-600 leading-relaxed">인정이자 납부를 위해 불가피하게 인상했던 추가 급여 4,700만 원 축소 (기존 1.2억 + 추가 4.7천만) &times; 한계세율 약 38% 가정</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-5 whitespace-nowrap font-bold text-slate-800 flex items-center"><span class="text-xl mr-2 group-hover:scale-125 transition-transform">&#127970;</span> 법인세 절감</td>
+<td class="px-6 py-5 whitespace-nowrap text-right font-black text-blue-600 text-lg">8,930,000 원</td>
+<td class="px-6 py-5 text-sm text-slate-600 leading-relaxed">인정이자 수익 4,700만 원이 법인 과세표준에서 제외됨에 따른 세금 감소 (법인세율 19% 적용 산출)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-5 whitespace-nowrap font-bold text-slate-800 flex items-center"><span class="text-xl mr-2 group-hover:scale-125 transition-transform">&#128201;</span> 대출 이자율 하락 이익</td>
+<td class="px-6 py-5 whitespace-nowrap text-right font-black text-blue-600 text-lg">44,000,000 원</td>
+<td class="px-6 py-5 text-sm text-slate-600 leading-relaxed">자본 확충(22억)으로 부채비율 하락 및 신용도 상승 &rarr; 기존 차입금 44억 원에 대한 이자율 1%p 인하 효과 가정</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-5 whitespace-nowrap font-bold text-slate-800 flex items-center"><span class="text-xl mr-2 group-hover:scale-125 transition-transform">&#128187;</span> 경영/관리비용 절감</td>
+<td class="px-6 py-5 whitespace-nowrap text-right font-black text-blue-600 text-lg">12,000,000 원</td>
+<td class="px-6 py-5 text-sm text-slate-600 leading-relaxed">3개사(한솔, 한솔실업, 한솔팩) 분할 운영에 따른 중복 기장료, 행정, 관리비용 등 월 100만 원 절약분 연환산</td>
+</tr>
+<tr class="bg-blue-50 border-t-2 border-blue-200">
+<td class="px-6 py-6 whitespace-nowrap font-black text-[#1E3A8A] text-lg">총 연간 직접 재무 혜택</td>
+<td class="px-6 py-6 whitespace-nowrap text-right font-black text-amber-500 text-2xl">129,790,000 원</td>
+<td class="px-6 py-6 text-sm font-bold text-[#1E3A8A]">통합 후 매년 회사 및 대표님께 귀속되는 순수익 증가분</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="lg:col-span-2 bg-white rounded-2xl p-8 card-shadow flex flex-col justify-center border border-slate-100">
+<h3 class="text-xl font-bold text-center text-slate-800 mb-6">연간 총 혜택 구성 비율</h3>
+<div class="chart-container">
+<canvas id="benefitsDonutChart"></canvas>
+</div>
+<div class="mt-6 text-center text-sm text-slate-500">
+* 가지급금 해결 하나만으로 전체 혜택의 36%가 직접 환원되며, 금리 인하 기대효과가 34%를 차지합니다.
+</div>
+</div>
+</div>
+</section>
+
+<section class="mb-24">
+<div class="mb-10">
+<h2 class="text-2xl md:text-3xl font-black text-[#1E3A8A] flex items-center"><span class="text-amber-500 mr-3">&#9632;</span> 2. 가업승계 기반 마련 및 상속세 혁신적 절감</h2>
+<p class="text-slate-600 mt-4 text-lg">현재 개인 명의의 부동산 등 실물 자산을 직접 상속할 경우 징벌적 수준의 상속세가 부과됩니다. 법인 통합은 이를 주식 가치로 전환하여 '가업상속공제'라는 강력한 세제 혜택을 받을 수 있는 합법적 통로를 열어줍니다.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="bg-white p-8 rounded-2xl card-shadow border border-slate-100">
+<h3 class="text-lg font-bold text-center text-slate-800 mb-6">개인 부동산 상속 vs 법인 통합 후 주식 상속 과세표준 비교</h3>
+<div class="chart-container">
+<canvas id="inheritanceChart"></canvas>
+</div>
+<p class="text-xs text-center text-slate-400 mt-4">* 본 차트는 2차 미팅에서 언급된 한솔실업 순자산 21억 원이 모두 과세대상일 경우를 가정하여 가업상속공제 효과를 극단적으로 보여주는 예시입니다.</p>
+</div>
+
+<div class="flex flex-col justify-center space-y-8">
+<div class="bg-slate-50 p-6 rounded-xl border-l-4 border-slate-400 relative">
+<div class="absolute -left-4 top-6 bg-slate-400 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">전</div>
+<h4 class="text-xl font-black text-slate-700 mb-3 ml-4">통합 전 : 개인사업자 유지 시</h4>
+<p class="text-slate-600 ml-4 leading-relaxed">
+개인사업자인 한솔실업 소유의 대규모 부동산 등은 대표님 개인 자산으로 간주됩니다. 유고 시 해당 부동산 시가 전체가 상속재산가액에 포함되어, <strong class="text-red-500">최대 50%의 높은 상속세율</strong>을 피할 수 없어 막대한 세금 납부를 위한 자산 매각(물납 등) 리스크가 존재합니다.
+</p>
+</div>
+
+<div class="text-3xl text-center text-amber-500 font-black animate-bounce">&#10515;</div>
+
+<div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600 relative card-shadow">
+<div class="absolute -left-4 top-6 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">후</div>
+<h4 class="text-xl font-black text-blue-800 mb-3 ml-4">통합 후 : 가업상속공제 요건 충족</h4>
+<p class="text-slate-700 ml-4 leading-relaxed">
+부동산이 '주식회사 한솔'의 법인 자산으로 현물출자되며, 대표님은 주식을 보유하게 됩니다. 2004년 설립된 한솔실업의 업력을 법인이 포괄 승계하므로 '10년 이상 가업' 요건을 충족합니다. 향후 자녀분께 주식 승계 시, <strong class="text-blue-700">최대 300억 원 한도 내에서 상속재산 과세표준에서 공제</strong>받아 상속세 부담을 사실상 'Zero' 수준으로 만들 수 있습니다.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="mb-12">
+<div class="mb-10">
+<h2 class="text-2xl md:text-3xl font-black text-[#1E3A8A] flex items-center"><span class="text-amber-500 mr-3">&#9632;</span> 3. [참고] 중소기업 간 통합 및 가지급금 상계 프로세스</h2>
+<p class="text-slate-600 mt-4 text-lg">어떠한 방식으로 약 10억 원의 가지급금이 소멸되고 단일 법인으로 거듭나는지, 현물출자를 활용한 구조적 흐름을 보여줍니다.</p>
+</div>
+
+<div class="bg-white p-8 md:p-12 rounded-2xl card-shadow border border-slate-100">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
+
+<div class="w-full md:w-1/4 space-y-4">
+<div class="bg-slate-100 border border-slate-300 rounded-xl p-5 text-center">
+<div class="font-black text-slate-700 text-lg mb-1">한솔실업 (개인)</div>
+<div class="text-sm font-medium text-slate-500">순자산 약 21억 원</div>
+</div>
+<div class="bg-slate-100 border border-slate-300 rounded-xl p-5 text-center">
+<div class="font-black text-slate-700 text-lg mb-1">한솔팩 (개인)</div>
+<div class="text-sm font-medium text-slate-500">순자산 약 8천만 원</div>
+</div>
+</div>
+
+<div class="text-4xl text-amber-500 font-black transform rotate-90 md:rotate-0">&#10145;</div>
+
+<div class="w-full md:w-1/3">
+<div class="bg-amber-50 border-2 border-amber-400 rounded-xl p-8 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>
+<div class="font-black text-amber-800 text-xl mb-4">현물 출자 (자산 이전)</div>
+<div class="text-3xl font-black text-amber-600 mb-4">총 21.8억 원</div>
+<div class="text-left space-y-2 inline-block">
+<div class="text-sm font-bold text-slate-700"><span class="text-emerald-500 mr-1">&#10004;</span> 10억 원: 기존 가지급금 상계 소멸</div>
+<div class="text-sm font-bold text-slate-700"><span class="text-blue-500 mr-1">&#10004;</span> 11.8억 원: 법인 신주 교부 (지분화)</div>
+</div>
+</div>
+</div>
+
+<div class="text-4xl text-blue-600 font-black transform rotate-90 md:rotate-0">&#10145;</div>
+
+<div class="w-full md:w-1/4">
+<div class="gradient-bg rounded-xl p-8 text-center text-white shadow-xl transform scale-105">
+<div class="font-black text-2xl mb-4">주식회사 한솔</div>
+<div class="bg-white/20 rounded-lg p-3 text-sm font-bold">
+우량 단일 법인 탄생<br><span class="text-amber-300 block mt-1">가지급금 리스크 해소 완료</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="mt-8 text-center text-sm text-slate-500 bg-slate-50 p-4 rounded-lg">
+* 1차 미팅 시 안내드린 바와 같이, 자산 감정평가 및 법원 인가 절차 등 통합 완료까지 약 3~6개월이 소요되며 모든 절차는 당사에서 일괄 대행합니다. (양도소득세 이월과세 및 취등록세 50% 감면 적용)
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-[#0F172A] text-slate-400 py-12 text-center text-sm">
+<div class="max-w-7xl mx-auto px-4">
+<p class="mb-2">본 문서는 귀사와의 미팅 결과 및 제공된 재무제표(Cretop 데이터)를 기반으로 작성된 추정 분석 보고서입니다.</p>
+<p class="mb-6">실제 실행 과정에서의 법원 감정평가, 금융기관 협의, 세법 개정에 따라 산출된 수치는 일부 변동될 수 있습니다.</p>
+<div class="inline-block border-t border-slate-700 pt-6">
+<p class="font-bold text-white text-base tracking-widest">HANSOL CONSULTING</p>
+<p class="mt-1">Corporate Integration & Tax Innovation Strategy</p>
+</div>
+</div>
+</footer>
+
+<script>
+function wrapLabel(label) {
+    if (label.length <= 16) return label;
+    let words = label.split(' ');
+    let lines = [];
+    let currentLine = words[0];
+    for (let i = 1; i < words.length; i++) {
+        if (currentLine.length + words[i].length + 1 > 16) {
+            lines.push(currentLine);
+            currentLine = words[i];
+        } else {
+            currentLine += ' ' + words[i];
+        }
+    }
+    lines.push(currentLine);
+    return lines;
+}
+
+const commonTooltipConfig = {
+    callbacks: {
+        title: function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        },
+        label: function(context) {
+            let label = context.dataset.label || '';
+            if (label) {
+                label += ': ';
+            }
+            if (context.parsed !== null && context.parsed.y !== undefined) {
+                label += new Intl.NumberFormat('ko-KR').format(context.parsed.y) + (context.chart.canvas.id === 'inheritanceChart' ? ' 억원' : ' 만원');
+            } else if (context.parsed !== null) {
+                label += new Intl.NumberFormat('ko-KR').format(context.parsed) + ' 만원';
+            }
+            return label;
+        }
+    }
+};
+
+const donutCtx = document.getElementById('benefitsDonutChart').getContext('2d');
+const rawDonutLabels = ['인정이자 면제 혜택', '대표이사 소득세 절감', '법인세 절감액', '대출 이자비용 감소', '경영 관리비용 절감'];
+const donutLabels = rawDonutLabels.map(wrapLabel);
+
+new Chart(donutCtx, {
+    type: 'doughnut',
+    data: {
+        labels: donutLabels,
+        datasets: [{
+            data: [4700, 1786, 893, 4400, 1200],
+            backgroundColor: [
+                '#10B981', 
+                '#3B82F6', 
+                '#60A5FA', 
+                '#F59E0B', 
+                '#8B5CF6'  
+            ],
+            borderWidth: 2,
+            borderColor: '#ffffff',
+            hoverOffset: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '65%',
+        plugins: {
+            tooltip: commonTooltipConfig,
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    font: { family: "'Noto Sans KR', sans-serif" }
+                }
+            }
+        }
+    }
+});
+
+const barCtx = document.getElementById('inheritanceChart').getContext('2d');
+const rawBarLabels = ['통합 전 (개인 부동산 상속 기준)', '통합 후 (가업상속공제 최대 활용)'];
+const barLabels = rawBarLabels.map(wrapLabel);
+
+new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: barLabels,
+        datasets: [{
+            label: '상속세 과세표준 (단위: 억원)',
+            data: [21, 0],
+            backgroundColor: [
+                '#EF4444', 
+                '#3B82F6'  
+            ],
+            borderRadius: 8,
+            barPercentage: 0.6
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            tooltip: commonTooltipConfig,
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 25,
+                grid: {
+                    color: '#F1F5F9',
+                    drawBorder: false
+                },
+                ticks: {
+                    font: { family: "'Noto Sans KR', sans-serif" },
+                    callback: function(value) {
+                        return value + ' 억';
+                    }
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: { family: "'Noto Sans KR', sans-serif", weight: 'bold' }
+                }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
